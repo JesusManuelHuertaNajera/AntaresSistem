@@ -30,7 +30,10 @@
         </div>
     </nav><!-- NAVEGACIÓN -->
   <!-- HERO -->
-        
+         <?php 
+       $mensaje = $_GET['text'];
+      
+      ?> 
   <div class="has-background-grey-lighter">
     <div class="container my-5 px-3">
         <section class="columns">
@@ -38,15 +41,14 @@
             <div class="column is-third-desktop is-flex is-flex-direction-column is-justify-content-space-between is-three-quarters-mobile">
                 <div>
                     <h1 class="is-size-1 has-text-black-bis has-text-weight-bold line-height-3 mb-4">
-                    <center> Error Con La Matricula </center>
+                    <center> <?php echo $mensaje ?> </center>
                     </h1>
                 </div>
-                <BR>
 
                 <BR>
                 <div>
                     <h3 class="is-size-4 has-text-black-bis has-text-weight-bold line-height-3 mb-4">
-                    <center> La matrícula es incorrecta, Verifica que sea correcta.  </center>
+                    <center> Disculpa el inconveniente.  </center>
                     </h3>
                 </div>
                 <BR>
