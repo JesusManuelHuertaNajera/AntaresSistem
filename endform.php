@@ -32,8 +32,10 @@
   <!-- HERO -->
       <?php 
        $matricula = $_GET['mat'];
+       $name = $_GET['name'];
+       $fecha = $_GET['date'];
       
-       $imagen = "./QRCode/".$matricula.".jpg"
+       $imagen = "./QRCode/images/".$matricula.".jpg"
       ?> 
   <div class="has-background-grey-lighter">
     <div class="container my-5 px-3">
@@ -41,9 +43,12 @@
            
             <div class="column is-third-desktop is-flex is-flex-direction-column is-justify-content-space-between is-three-quarters-mobile">
                 <div>
-                    <h1 class="is-size-1 has-text-black-bis has-text-weight-bold line-height-3 mb-4">
-                    <center> Gracias</center>
-                    </h1>
+                    <h3 class="is-size-2 has-text-black-bis has-text-weight-bold line-height-3 ">
+                    <center><?php  echo "Nombre: ".$name ?> </center>
+                    </h3>
+                    <h3 class="is-size-2 has-text-black-bis has-text-weight-bold line-height-3 ">
+                    <center> <?php  echo "Fecha: ".$fecha ?></center>
+                    </h3>
                 </div>
                 <div>
                     <center>
