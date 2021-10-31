@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="./librerias/bulma/css/bulma.min.css">
   </head>
   <body>
-      <!-- NAVEGACIÓN -->
+      <!-- NAVEGACI脫N -->
       <nav class="navbar is-link" role="navigation" aria-label="main navigation">
         <div class="container">
             <div id="navbarBasicExample" class="navbar-menu">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-    </nav><!-- NAVEGACIÓN -->
+    </nav><!-- NAVEGACI脫N -->
   <!-- HERO -->
         
   <div class="has-background-grey-lighter">
@@ -38,15 +38,16 @@
             <div class="column is-third-desktop is-flex is-flex-direction-column is-justify-content-space-between is-three-quarters-mobile">
                 <div>
                     <h1 class="is-size-1 has-text-black-bis has-text-weight-bold line-height-3 mb-4">
-                    <center> Disculpa</center>
+                    <center> Acceso denegado. </center>
                     </h1>
                 </div>
                 <BR>
-
-                <BR>
                 <div>
                     <h3 class="is-size-4 has-text-black-bis has-text-weight-bold line-height-3 mb-4">
-                    <center> Existe el riesgo de que tengas covid, ten calma y acude a tu medico.</center>
+                    <center> Probable situaci贸n de riesgo.</center>
+                    </h3>
+                    <h3 class="is-size-4 has-text-black-bis has-text-weight-bold line-height-3 mb-4">
+                    <center> Comunicar la situaci贸n al Colegio.</center>
                     </h3>
                 </div>
                 <BR>
