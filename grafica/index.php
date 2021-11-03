@@ -52,7 +52,7 @@ $mysql = require_once "../conexion.php";
         <div class="column ">
             <form action="" method="GET">
                 <h2 class="title is-5">Coloca La Matrícula</h2>
-                <input type="text" name="search">
+                <input type="text" name="search" required>
                 <br>
                 <br>
                 <button class=" button is-link is-rounded is-small" type="submit" name="send" >Buscar</button>
@@ -91,10 +91,10 @@ $mysql = require_once "../conexion.php";
            
                         <h1 class="title is-5">Coloca el rango de fechas</h1>
                         <h4 class="title is-6">Inicio:
-                        <input type="date" name="fs">
+                        <input type="date" name="fs" required>
                         </h4> 
                         <h4 class="title is-6">Fin:
-                        <input type="date" name="fe">
+                        <input type="date" name="fe" required>
                         </h4> 
                         <button class=" button is-link is-rounded is-small" type="submit" name="fin" >Cargar</button>
             </form>
@@ -136,6 +136,12 @@ $mysql = require_once "../conexion.php";
                 $consulta_E = $mysql->query($select_estudiante);
                 $consulta_F = $mysql->query($select_form);
                 $forms=mysqli_num_rows($consulta_F);
+
+                if($fechaE == $fechaS){
+                    $Fecha = $fechaS;
+                }else{
+                    $Fecha = $fechaS." - ".$fechaE;
+                }
                 if($forms>0){
                     foreach($consulta_E as $up){
                         $Matricula = $up['MATRICULA'];
@@ -189,17 +195,11 @@ $mysql = require_once "../conexion.php";
                         }
 
                     }
-                }else{
-                    echo "Sin Datos Que Mostrar";
-                }
-                if($fechaE == $fechaS){
-                    $Fecha = $fechaS;
-                }else{
-                    $Fecha = $fechaS." - ".$fechaE;
-                }
+                
+                
         ?>           
     <div class="">
-        <div class="" id="test">
+        <div class="" id="none">
             <div class="mover  title is-3" >
                 <h1>Reporte COVID-19</h1> 
             </div>
@@ -215,31 +215,31 @@ $mysql = require_once "../conexion.php";
                 
             </div>
             <div class="columns space">
-                <div class="column is-full">
+                <div class="column ">
                     <h1 class="title is-5">Nombre:</h1>
                     <?php echo $Nombre; ?>
                 </div>
                 <div class="column">
                 </div>
                 <div class="column">
-                    
+                    <h1 class="title is-5">Grado:</h1>
+                    <?php echo  $Grado; ?>
                 </div>
                 <div class="column">
-                    
                 </div>
             </div>
             <div class="columns space">
-                <div class="column is-full">
-                    <h1 class="title is-5">Matricula:</h1>
+                <div class="column ">
+                    <h1 class="title is-5">Matrícula:</h1>
                     <?php echo  $Matricula; ?>
                 </div>
                 <div class="column">
                 </div>
                 <div class="column">
-                    
+                    <h1 class="title is-5">Nivel:</h1>
+                    <?php echo  $Nivel; ?>
                 </div>
                 <div class="column">
-                    
                 </div>
             </div>
             <div class="">
@@ -249,7 +249,20 @@ $mysql = require_once "../conexion.php";
             </div>
         </div>
     </div>
-    <?php } ?>
+    <?php 
+            }else{
+         ?>
+        <div class="">
+        <div class="" id="test">
+            <div class="mover  title is-3" >
+                <h1>Sin Datos Que Mostrar De Ese Rango De Fechas</h1> 
+            </div>
+            
+        </div>
+    </div>
+    <?php  
+        }
+    } ?>
 </body>
 </html>
 <script type="text/javascript">
