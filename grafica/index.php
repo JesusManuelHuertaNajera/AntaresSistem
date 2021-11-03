@@ -21,6 +21,9 @@ $mysql = require_once "../conexion.php";
         .space{
             padding-left: 60px;
         }
+        .textos{
+            padding-left: 40px;
+        }
     </style>
 </head>
 <body>
@@ -116,6 +119,7 @@ $mysql = require_once "../conexion.php";
             $p23 = 0;
             $p24 = 0;
             $p25 = 0;
+            $p26 = 0;
 
             $p31 = 0;
             $p32 = 0;
@@ -123,9 +127,13 @@ $mysql = require_once "../conexion.php";
             $p34 = 0;
             $p35 = 0;
             $p36 = 0;
+            $p37 = 0;
 
             $p4 = 0;
             $p5 = 0;
+            $pn4 = 0;
+            $pn5 = 0;
+
 
             if(isset($_POST['fin'])){
                 $search = $_POST['mat'];
@@ -189,17 +197,17 @@ $mysql = require_once "../conexion.php";
 
                         if($ups['P4'] == "SI"){
                             $p4 = $p4 + 1;
-                        }
+                        }else{$pn4 = $pn4+1;}
                         if($ups['P5'] == "SI"){
                             $p5 = $p5 + 1;
-                        }
+                        }else{$pn5 = $pn5+1;}
 
                     }
                 
                 
         ?>           
     <div class="">
-        <div class="" id="none">
+        <div class="" id="test">
             <div class="mover  title is-3" >
                 <h1>Reporte COVID-19</h1> 
             </div>
@@ -243,9 +251,12 @@ $mysql = require_once "../conexion.php";
                 </div>
             </div>
             <div class="">
-            
                 <div class="mover" id="cargaBarra"></div>
-                
+                <div class="mover" id="cargaBarras"></div>
+                <h1 class="textos title is-6">3.-¿Has regresado de algún viaje internacional en los ultimos 14 dias?</h1>
+                <div class="mover" id="siQ"></div>
+                <h1 class="textos title is-6">4.-¿Eres un contacto cercano de alguna persona que padece COVID-19 confirmado?</h1>
+                <div class="mover" id="siQs"></div>
             </div>
         </div>
     </div>
@@ -257,7 +268,6 @@ $mysql = require_once "../conexion.php";
             <div class="mover  title is-3" >
                 <h1>Sin Datos Que Mostrar De Ese Rango De Fechas</h1> 
             </div>
-            
         </div>
     </div>
     <?php  
@@ -268,8 +278,8 @@ $mysql = require_once "../conexion.php";
 <script type="text/javascript">
     var data = [
         {
-            labels:['Con sintomas','Sin sintomas'],
-            values:[20,14],
+            labels:['Fiebre','Dificultad al respirar','Escalofríos','Tos','Pérdida de gusto u olfato','Ninguna de las anteriores'],
+            values:[4,0,15,0,2,6,0],
             type: 'pie',
             textinfo: "label+percent",
             textposition: "outside",
@@ -280,7 +290,7 @@ $mysql = require_once "../conexion.php";
     var layout = {
     height: 400,
     width: 500,
-    title: 'Niños en el colegio con sintomas',
+    title: '1.- ¿Actualmente tienes uno de estos síntomas?',
     
     };
     var config ={
@@ -289,4 +299,75 @@ $mysql = require_once "../conexion.php";
 
     };
     Plotly.newPlot('cargaBarra',data,layout,config);
+
+    var datas = [
+        {
+            labels:['Dolor de garganta','Fatiga','Dolor de cabeza','Dolor de cuerpo o muscular','Náuseas o vómito','Diarrea','Ninguna de las anteriores'],
+            values:[2,1,5,0,2,3,0],
+            type: 'pie',
+            textinfo: "label+percent",
+            textposition: "outside",
+            automargin: true
+
+        }
+    ];
+    var layouts = {
+    height: 400,
+    width: 500,
+    title: '2.- ¿Actualmente tienes uno de estos síntomas?',
+    
+    };
+    var configs ={
+        displaylogo: false,
+        modeBarButtonsToRemove: ['zoom2d','pan2d','select2d','lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']
+
+    };
+    Plotly.newPlot('cargaBarras',datas,layouts,configs);
+
+    var dato = [
+        {
+            labels:['No','Si'],
+            values:[2,1],
+            type: 'pie',
+            textinfo: "label+percent",
+            textposition: "outside",
+            automargin: true
+
+        }
+    ];
+    var layou = {
+    height: 400,
+    width: 500,
+    
+    };
+    var confi ={
+        displaylogo: false,
+        modeBarButtonsToRemove: ['zoom2d','pan2d','select2d','lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']
+
+    };
+    Plotly.newPlot('siQ',dato,layou,confi);
+
+    var datos = [
+        {
+            labels:['No','Si'],
+            values:[4,0],
+            type: 'pie',
+            textinfo: "label+percent",
+            textposition: "outside",
+            automargin: true
+
+        }
+    ];
+    var layous = {
+    height: 400,
+    width: 500,
+    
+    
+    };
+    var confis ={
+        displaylogo: false,
+        modeBarButtonsToRemove: ['zoom2d','pan2d','select2d','lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']
+
+    };
+    Plotly.newPlot('siQs',datos,layous,confis);
 </script>
