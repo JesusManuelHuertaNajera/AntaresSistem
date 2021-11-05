@@ -58,7 +58,7 @@
                 <BR>
                 <div>
                   <center>
-                  <a class="button is-success is-rounded has-text-black" href='./QRCode/descarga.php'>
+                  <a class="button is-success is-rounded has-text-black" href="<?php echo "./QRCode/descarga.php?mat=$matricula" ?>">
                   Descargar
                   <img src= "./images/R.png"  alt="Image" style="width:40px;height:20px;">
                 </a>
