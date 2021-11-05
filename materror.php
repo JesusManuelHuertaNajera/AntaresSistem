@@ -8,25 +8,23 @@
   </head>
   <body>
       <!-- NAVEGACIÓN -->
-      <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-link " role="navigation" aria-label="main navigation">
         <div class="container">
-            <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-brand">
                 <img src= "./images/logoColegio.png"  alt="Image" style="width:50px;height:50px;">
                   <a class="navbar-item" >
-                    Colegio Antares Tulancingo
+                      Colegio Antares Tulancingo
                   </a> 
                 </div>
                 <div class="navbar-end">
-                    <a href="./index.php" class="navbar-item">
+                    <a href="./form.php" class="navbar-item">
                       Regresar
                     </a>
-                    <!--
+<!--
                     <a href="./docker.html" class="navbar-item">
                       Docker
                     </a>-->
                 </div>
-            </div>
         </div>
     </nav><!-- NAVEGACIÓN -->
   <!-- HERO -->
