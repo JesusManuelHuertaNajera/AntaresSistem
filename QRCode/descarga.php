@@ -1,6 +1,8 @@
 <?php
+  $matricula = $_GET['mat'];
+  $imagen = "./images/".$matricula.".jpg";
   //file path
-  $file = "./qr.jpg";
+  $file = $imagen;
   //TOMA LA RUTA DE LA IMAGEN PARA PODER DESCARGAR SU QR EN EL DISPOSITIVO
   $img = $file;
   header('Content-Description: File Transfer');
