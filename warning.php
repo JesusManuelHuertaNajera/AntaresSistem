@@ -7,28 +7,26 @@
     <link rel="stylesheet" type="text/css" href="./librerias/bulma/css/bulma.min.css">
   </head>
   <body>
-      <!-- NAVEGACI脫N -->
-      <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+      <!-- NAVEGACI�0�7N -->
+      <nav class="navbar is-link " role="navigation" aria-label="main navigation">
         <div class="container">
-            <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-brand">
                 <img src= "./images/logoColegio.png"  alt="Image" style="width:50px;height:50px;">
                   <a class="navbar-item" >
-                    Colegio Antares Tulancingo
+                      Colegio Antares Tulancingo
                   </a> 
                 </div>
                 <div class="navbar-end">
-                    <a href="./index.php" class="navbar-item">
+                    <a href="./form.php" class="navbar-item">
                       Regresar
                     </a>
-                    <!--
+<!--
                     <a href="./docker.html" class="navbar-item">
                       Docker
                     </a>-->
                 </div>
-            </div>
         </div>
-    </nav><!-- NAVEGACI脫N -->
+    </nav><!-- NAVEGACI�0�7N -->
   <!-- HERO -->
         
   <div class="has-background-grey-lighter">
@@ -44,10 +42,10 @@
                 <BR>
                 <div>
                     <h3 class="is-size-4 has-text-black-bis has-text-weight-bold line-height-3 mb-4">
-                    <center> Probable situaci贸n de riesgo.</center>
+                    <center> Probable situación de riesgo.</center>
                     </h3>
                     <h3 class="is-size-4 has-text-black-bis has-text-weight-bold line-height-3 mb-4">
-                    <center> Comunicar la situaci贸n al Colegio.</center>
+                    <center> Comunicar la situación al Colegio.</center>
                     </h3>
                 </div>
                 <BR>
