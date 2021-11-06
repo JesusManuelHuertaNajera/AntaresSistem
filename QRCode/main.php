@@ -1,150 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colegio</title>
+    <link rel="stylesheet" type="text/css" href="./librerias/bulma/css/bulma.min.css">
 
-<?php
-
-//load the ar library
-include 'phpqrcode/qrlib.php'; 
-
-// CARGA LA CONEXION CON LA BASE DE DATOS
-$mysql = require_once "../conexion.php";
-
-//LOS VALORES SE COLOCAN EN VARIABLES
-$matricula = $_POST["matricula"];
-
-if (!isset($_POST['v21'])) {
-  $p21 = "NO";
-}else{$p21 = "SI";}
-
-if (!isset($_POST['v22'])) {
-  $p22 = "NO";
-}else{$p22 = "SI";}
-
-if (!isset($_POST['v23'])) {
-  $p23 = "NO";
-}else{$p23 = "SI";}
-
-if (!isset($_POST['v24'])) {
-  $p24 = "NO";
-}else{$p24 = "SI";}
-
-if (!isset($_POST['v25'])) {
-  $p25 = "NO";
-}else{$p25 = "SI";}
-
-if (!isset($_POST['v26'])) {
-  $p26 = "NO";
-}else{$p26 = "SI";}
-
-if (!isset($_POST['v31'])) {
-  $p31 = "NO";
-}else{$p31 = "SI";}
-
-if (!isset($_POST['v32'])) {
-  $p32 = "NO";
-}else{$p32 = "SI";}
-
-if (!isset($_POST['v33'])) {
-  $p33 = "NO";
-}else{$p33 = "SI";}
-
-if (!isset($_POST['v34'])) {
-  $p34 = "NO";
-}else{$p34 = "SI";}
-
-if (!isset($_POST['v35'])) {
-  $p35 = "NO";
-}else{$p35 = "SI";}
-
-if (!isset($_POST['v36'])) {
-  $p36 = "NO";
-}else{$p36 = "SI";}
-
-if (!isset($_POST['v37'])) {
-  $p37 = "NO";
-}else{$p37 = "SI";}
-
-
-$intera = $_POST["intera"];
-
-$contact = $_POST["contact"];
-
-$uso = 1;
-//TOMA LA HORA Y FECHA DE LA CIUDAD DE MEXICO
-date_default_timezone_set('America/Mexico_City');    
-$fecha = date('Y-m-d');  
-
-$revisar = "SELECT * FROM FORM_COVID WHERE FECHA = "."'".$fecha."'" ." AND P1 ="."'".$matricula."'";
-$resp = $mysql->query($revisar);
-$rowcount=mysqli_num_rows($resp);
-
-if($rowcount > 0){
-    $texto = "Error: Solo Puedes Hacer Tu Registro Una Vez Al Dia.";
-    header("location: ../materror.php?text=$texto");
-}else{
-    $check = "SELECT * FROM ESTUDIANTES WHERE MATRICULA ="."'".$matricula."'";
-    $res = $mysql->query($check);
-    $matT=mysqli_num_rows($resp);
-    $i = 0;
-    $Fo_name;
-    $Fo_date = $fecha;
-    foreach($res as $up){
-      $i=$i+1;
-      $Fo_name=$up['NOMBRE_C'];
-    }
-    echo $i;
-    if($i > 0){
-        if($p21=="SI" or $p22=="SI" or $p23=="SI" or $p24=="SI" or $p25=="SI" or $p31=="SI" or $p32=="SI" or $p33=="SI" or $p34=="SI" or $p35=="SI" or $p36=="SI"             or $intera == "SI" or $contact == "SI"){
-        $p26 = "NO";
-        $p37 = "NO";
-        //INSERTA LOS DATOS A LA BASE DE DATOS
-        $select = "INSERT INTO `FORM_COVID`(`P1`, `P21`, `P22`, `P23`, `P24`,`P25`, `P26`, `P31`, `P32`, `P33`,`P34`, `P35`, `P36`, `P37`, `P4`,`P5`, `FECHA`,                `USO`) VALUES           (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        $resultado = $mysql->prepare($select);
-        $resultado -> bind_param("sssssssssssssssssi",$matricula,
-        $p21,$p22,$p23,$p24,$p25,$p26
-        ,$p31,$p32,$p33,$p34,$p35,$p36,$p37
-        ,$intera,$contact,$fecha,$uso);
-        $resultado ->execute();
-        
-        header("location: ../warning.php");
-        }else{
-            $p26 = "SI";
-            $p37 = "SI";
-            //INSERTA LOS DATOS A LA BASE DE DATOS
-            $select = "INSERT INTO `FORM_COVID`(`P1`, `P21`, `P22`, `P23`, `P24`,`P25`, `P26`, `P31`, `P32`, `P33`,`P34`, `P35`, `P36`, `P37`, `P4`,`P5`, `FECHA`,                `USO`) VALUES           (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $resultado = $mysql->prepare($select);
-            $resultado -> bind_param("sssssssssssssssssi",$matricula,
-            $p21,$p22,$p23,$p24,$p25,$p26
-            ,$p31,$p32,$p33,$p34,$p35,$p36,$p37
-            ,$intera,$contact,$fecha,$uso);
-            $resultado ->execute();
-            //header("location: index.php");
-
-            $content_id;
-            $ObtenerId = "SELECT ID FROM FORM_COVID WHERE FECHA = "."'".$fecha."'" ." AND P1 ="."'".$matricula."'";
-            $info = $mysql->query($ObtenerId);
-            foreach($info as $text){
-              $content_id = $text['ID'];
-            }
-            //--------------------GENERAR QR----------------------------
-            //data to be stored in qr
-            $text = strval($content_id);
-            
-            //file path
-            $file = "./images/".$matricula.".jpg";
-
-            //other parameters
-            $ecc = 'H';
-            $pixel_size = 20;
-            $frame_size = 5;
-            
-            // Generates QR Code and Save as PNG
-            QRcode::png($text, $file, $ecc, $pixel_size, $frame_size);
-
-            //TERMINA EL PROCESO MANDANDO A LA PANTALLA FINAL
-            header("location:../endform.php?mat=$matricula&name=$Fo_name&date=$Fo_date");
+    <style type="text/css">
+         .textos{
+            padding-left: 40px;
         }
-    }else{
-        $texto = "Error Con La Matricula";
-        header("location: ../materror.php?text=$texto");
-    }
-    }
-?>
+    </style>
+  </head>
+  <body>
+      <!-- NAVEGACIÓN -->
+      <nav class="navbar is-link " role="navigation" aria-label="main navigation">
+        <div class="container">
+                <div class="navbar-brand">
+                <img src= "./images/logoColegio.png"  alt="Image" style="width:50px;height:50px;">
+                  <a class="navbar-item" >
+                      Colegio Antares Tulancingo
+                  </a> 
+                </div>
+                <div class="navbar-end">
+                   <!-- <a href="./index.php" class="navbar-item">
+                      Regresar
+                    </a>
+
+                    <a href="./docker.html" class="navbar-item">
+                      Docker
+                    </a>-->
+                </div>
+        </div>
+    </nav><!-- NAVEGACIÓN -->
+  <!-- HERO -->
+        
+    <div class="has-background-grey-lighter">    
+       <br>
+       <div class="columns">
+            <div class="column">
+            </div>
+            <div class="column box">
+                <CENTER>
+                <h1 class="title is-4">PERSONAL</h1>
+                </CENTER>
+                <center>
+                    <img src= "./images/regla.png"  alt="Image" style="width:100px;height:100px;">
+                </center>
+                <CENTER>
+                    <a class="button  is-fullwidth is-rounded is-info" href="./personal/login.php"> Entrar</a>
+                </CENTER>
+            </div>
+            <div class="column">
+            </div>
+        </div>
+        <br>
+       <div class="columns">
+            <div class="column">
+            </div>
+            <div class="column box">
+                <CENTER>
+                <h1 class="title is-4">ESTUDIANTES</h1>
+                </CENTER>
+                <center>
+                    <img src= "./images/libreta.png"  alt="Image" style="width:100px;height:100px;">
+                </center>
+                <CENTER>
+                    <a class="button  is-fullwidth is-rounded is-info" href="./menue.php"> Entrar</a>
+                </CENTER>
+            </div>
+            <div class="column">
+                
+        </div>
+    
+</div><!-- HERO -->
+</body>
+</html>
