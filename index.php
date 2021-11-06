@@ -42,13 +42,13 @@
             </div>
             <div class="column box">
                 <CENTER>
-                <h1 class="title is-4">DOCENTES</h1>
+                <h1 class="title is-4">PERSONAL</h1>
                 </CENTER>
                 <center>
                     <img src= "./images/regla.png"  alt="Image" style="width:100px;height:100px;">
                 </center>
                 <CENTER>
-                    <a class="button  is-fullwidth is-rounded is-info"> Entrar</a>
+                    <a class="button  is-fullwidth is-rounded is-info" href="./personal/login.php"> Entrar</a>
                 </CENTER>
             </div>
             <div class="column">
