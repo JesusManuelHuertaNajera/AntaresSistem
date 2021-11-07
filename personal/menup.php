@@ -53,6 +53,19 @@
                     <a class="button  is-fullwidth is-rounded is-info" href="./resp/form.php"> Entrar</a>
                 </CENTER>
             </div>
+            <div class="column ">
+            </div>
+            <div class="column box">
+                <CENTER>
+                <h1 class="title is-4">Reporte Estudiantes</h1>
+                </CENTER>
+                <center>
+                    <img src= "../images/reports.png"  alt="Image" style="width:100px;height:100px;">
+                </center>
+                <CENTER>
+                    <a class="button  is-fullwidth is-rounded is-info" href="./report/est.php"> Entrar</a>
+                </CENTER>
+            </div>
             <div class="column">
                 
         </div>
