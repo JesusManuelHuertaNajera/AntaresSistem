@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -86,7 +87,10 @@
       </div>
     </div>
     </Form>
-    <?php 
+    <?php
+    // start a session
+        session_start();
+        unset($_SESSION['p']);
         $mysql = require_once "../conexion.php";
                 if(isset($_GET['log'])){
                     $email= $_GET['mail'];
@@ -95,9 +99,13 @@
                     $resp = $mysql->query($revisar);
                     $texto = "Error";
                     $i = 0;
+                    $permis="";
                     foreach($resp as $up){
                         $i=$i+1;
+                        $permis = $up["PERMISOS"];
                     }
+                    // initialize session variables
+                    $_SESSION['p'] = $permis;
                     if($i > 0){
                         header("location: ./menup.php");
                     }
