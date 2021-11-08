@@ -1,3 +1,6 @@
+<?php
+session_start();
+$permisos= $_SESSION['p']; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -38,6 +41,29 @@
     <div class="has-background-grey-lighter">    
        <br>
         <br>
+        <?php 
+        if($permisos == 1){ ?>
+        <div class="columns">
+            <div class="column">
+                
+            </div>
+            <div class="column box">
+                <CENTER>
+                <h1 class="title is-4">Formulario COVID-19</h1>
+                </CENTER>
+                <center>
+                    <img src= "../images/formulario.png"  alt="Image" style="width:100px;height:100px;">
+                </center>
+                <CENTER>
+                    <a class="button  is-fullwidth is-rounded is-info" href="./resp/form.php"> Entrar</a>
+                </CENTER>
+            </div>
+            <div class="column ">
+            </div>
+        </div>
+        <?php } ?>
+        <?php 
+        if($permisos == 2){ ?>
        <div class="columns">
             <div class="column">
                 
@@ -63,13 +89,60 @@
                     <img src= "../images/reports.png"  alt="Image" style="width:100px;height:100px;">
                 </center>
                 <CENTER>
-                    <a class="button  is-fullwidth is-rounded is-info" href="./report/est.php"> Entrar</a>
+                    <a class="button  is-fullwidth is-rounded is-info" href=<?php echo "./report/est.php"; ?>> Entrar</a>
                 </CENTER>
             </div>
             <div class="column">
-                
+            </div>  
         </div>
-    
+        <?php } ?>
+        <?php 
+        if($permisos == 3){ ?>
+        <div class="columns">
+            <div class="column">
+                
+            </div>
+            <div class="column box">
+                <CENTER>
+                <h1 class="title is-4">Formulario COVID-19</h1>
+                </CENTER>
+                <center>
+                    <img src= "../images/formulario.png"  alt="Image" style="width:100px;height:100px;">
+                </center>
+                <CENTER>
+                    <a class="button  is-fullwidth is-rounded is-info" href=<?php echo "./resp/form.php"; ?>> Entrar</a>
+                </CENTER>
+            </div>
+            <div class="column ">
+            </div>
+            <div class="column box">
+                <CENTER>
+                <h1 class="title is-4">Reporte Estudiantes</h1>
+                </CENTER>
+                <center>
+                    <img src= "../images/reports.png"  alt="Image" style="width:100px;height:100px;">
+                </center>
+                <CENTER>
+                    <a class="button  is-fullwidth is-rounded is-info" href=<?php echo "./report/est.php"; ?>> Entrar</a>
+                </CENTER>
+            </div>
+            <div class="column ">
+            </div>
+            <div class="column box">
+                <CENTER>
+                <h1 class="title is-4">Reporte Personal</h1>
+                </CENTER>
+                <center>
+                    <img src= "../images/reportsp.png"  alt="Image" style="width:100px;height:100px;">
+                </center>
+                <CENTER>
+                    <a class="button  is-fullwidth is-rounded is-info" href=<?php echo "./perport/per.php" ?>> Entrar</a>
+                </CENTER>
+            </div>
+            <div class="column">
+            </div>  
+        </div>
+    <?php } ?>
 </div><!-- HERO -->
 </body>
 </html>
